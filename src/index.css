@@ -1,13 +1,219 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+header{
+  position: relative;
+  z-index: 99999;
+  background: #fff;
+  -webkit-box-shadow: 0 0 0.4rem 0 rgba(0,0,0,.18);
+  box-shadow: 0 0 0.4rem 0 rgba(0,0,0,.18);
+  padding: 2rem 0;
+  min-height: 30px;
+  border-bottom: 2px solid #00b5b7;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.container{
+  width: 80%;
+  margin: auto;
+}
+
+h2{
+  margin-bottom: 30px;
+}
+
+.marginT10{
+  margin-top: 10px;
+}
+
+.marginT30{
+  margin-top: 30px;
+}
+.MuiPaper-elevation1{
+  box-shadow: none!important;
+}
+
+.styleg-row__spacing{
+  background-color: #0071eb;
+  height: 10px;
+}
+
+.styleg-row__spacing.styleg-row__spacing--xs{
+  height: 10px;
+}
+
+.styleg-row__spacing.styleg-row__spacing--s{
+  height: 20px;
+}
+
+.styleg-row__spacing.styleg-row__spacing--m{
+  height: 30px;
+}
+
+.styleg-row__spacing.styleg-row__spacing--l{
+  height: 60px;
+}
+
+
+.icon-box-wrap{
+    min-height: 120px;
+    padding-top: 10px;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: Roboto, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    color: #000000;
+    border: 1px solid #cccccc;
+}
+
+.app-btn-wrap button.MuiButtonBase-root{
+  min-width: 180px!important;
+  margin: 10px!important;
+} 
+
+.Mui-scroll-btn{
+ margin-left: 5px!important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.makeStyles-root-2 .MuiTextField-root{
+  min-width: 39.2ch!important;
+}
+
+.info{
+  font-family: Geogrotesque, sans-serif;
+  font-size: 18px;
+  display: block;
+}
+
+.styleguide-nav {
+  background: repeating-linear-gradient(45deg,#e7e7e7,#e7e7e7 1px,#f3f3f3 2px,#f3f3f3 5.5px);
+  margin-bottom: 5rem;
+  flex: 1 1 auto;
+  max-height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.styleguide-nav a{
+  font-size: 16pt;
+  line-height: 24pt;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  margin-top: 15px;
+ 
+}
+
+.styleg__files{
+  background: repeating-linear-gradient(45deg,#e7e7e7,#e7e7e7 1px,#f3f3f3 2px,#f3f3f3 5.5px);
+  padding: 0.8rem 2rem;
+}
+
+.styleg__files .heading-l{
+  line-height: 0px;
+}
+
+.styleg-row {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+.heading-l-mob{
+  font-size: 22px;
+  line-height: 25px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
+
+.styleg-row .styleg-row__css {
+  flex: 1 1 0;
+  border-right: solid 2px #e5e5e5;
+  margin-right: 8rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18pt;
+  line-height: 24pt;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  font-family: Geogrotesque, sans-serif;
+ 
+}
+.styleg-row .styleg-row__example {
+  flex: 2;
+}
+
+.marginB45{
+  margin-bottom: 45px;
+}
+
+.text-normal{
+font-weight: normal;
+}
+.divider{
+  height: 2px;
+  border-bottom: 2px solid #000;
+  margin: 30px 0;
+}
+
+.link-wrap{
+  margin: 50px 0px;
+}
+
+a{
+  margin-right: 15px;
+}
+
+.flex{
+  display: flex;
+  
+}
+
+.mobile-view{
+  width: 50%;
+}
+
+.desktop-view{
+  width: 50%;
+}
+
+.mobile-view .heading-xxl{
+      font-size: 33px;
+      line-height: 28px;
+      font-weight: 700;
+}
+
+.mobile-view .heading-xl {
+  font-size: 28px;
+  line-height: 25px;
+  font-weight: 700;
+}
+
+.mobile-view .heading-l{
+  font-family: Geogrotesque, sans-serif;
+  font-size: 22px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
+
+.MuiButton-contained{
+  background: none;
+  color: none;
+  box-shadow: none;
 }

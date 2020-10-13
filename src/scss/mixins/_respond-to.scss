@@ -1,0 +1,191 @@
+﻿// Responsive helper mixin
+
+@mixin respond-to($bs-size) {
+    // sm only
+    @if $bs-size == sm {
+        @media (max-width: $screen-sm-max) {
+            @content;
+        }
+    }
+    // md only
+    @else if $bs-size == md {
+        @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // sm, md
+    @else if $bs-size == md-down {
+        @media (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // md, lg, xl
+    @else if $bs-size == md-up {
+        @media (min-width: $screen-md-min) {
+            @content;
+        }
+    }
+    // lg only
+    @else if $bs-size == lg {
+        @media (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+            @content;
+        }
+    }
+    // sm, md, lg
+    @else if $bs-size == lg-down {
+        @media (max-width: $screen-lg-max) {
+            @content;
+        }
+    }
+    // lg, xl
+    @else if $bs-size == lg-up {
+        @media (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+    // xl
+    @else if $bs-size == xl {
+        @media (min-width: $screen-xl-min) {
+            @content;
+        }
+    }
+    // xxl
+    @else if $bs-size == xxl {
+        @media (min-width: $screen-xxl-min) {
+            @content;
+        }
+    }
+}
+
+
+@mixin respond-to-screen-only($bs-size: null) {
+    // sm only
+    @if $bs-size == sm {
+        @media screen and (max-width: $screen-sm-max) {
+            @content;
+        }
+    }
+    // md only
+    @else if $bs-size == md {
+        @media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // sm, md
+    @else if $bs-size == md-down {
+        @media screen and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // md, lg, xl
+    @else if $bs-size == md-up {
+        @media screen and (min-width: $screen-md-min) {
+            @content;
+        }
+    }
+    // lg only
+    @else if $bs-size == lg {
+        @media screen and (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+    // sm, md, lg
+    @else if $bs-size == lg-down {
+        @media screen and (max-width: $screen-lg-max) {
+            @content;
+        }
+    }
+    // lg, xl
+    @else if $bs-size == lg-up {
+        @media screen and (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+    // xl
+    @else if $bs-size == xl {
+        @media screen and (min-width: $screen-xl-min) {
+            @content;
+        }
+    }
+    // screen only
+    @else if $bs-size == xl {
+        @media screen and (min-width: $screen-xl-min) {
+            @content;
+        }
+    }
+    // xxl
+    @else if $bs-size == xxl {
+        @media screen and (min-width: $screen-xxl-min) {
+            @content;
+        }
+    }
+    // screen only
+    @else if $bs-size == xxl {
+        @media screen and (min-width: $screen-xxl-min) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-to-print-only($bs-size: null) {
+    // sm only
+    @if $bs-size == sm {
+        @media print and (max-width: $screen-sm-max) {
+            @content;
+        }
+    }
+    // md only
+    @else if $bs-size == md {
+        @media print and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // sm, md
+    @else if $bs-size == md-down {
+        @media print and (max-width: $screen-md-max) {
+            @content;
+        }
+    }
+    // md, lg, xl
+    @else if $bs-size == md-up {
+        @media print and (min-width: $screen-md-min) {
+            @content;
+        }
+    }
+    // lg only
+    @else if $bs-size == lg {
+        @media print and (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+    // sm, md, lg
+    @else if $bs-size == lg-down {
+        @media print and (max-width: $screen-lg-max) {
+            @content;
+        }
+    }
+    // lg, xl
+    @else if $bs-size == lg-up {
+        @media print and (min-width: $screen-lg-min) {
+            @content;
+        }
+    }
+    // lg, xl
+    @else if $bs-size == xl {
+        @media print and (min-width: $screen-xl-min) {
+            @content;
+        }
+    }
+    // xxl
+    @else if $bs-size == xxl {
+        @media print and (min-width: $screen-xxl-min) {
+            @content;
+        }
+    }
+    // print only
+    @else if $bs-size == null {
+        @media print {
+            @content;
+        }
+    }
+}

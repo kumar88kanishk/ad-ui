@@ -1,0 +1,96 @@
+//== Forms
+//
+//## Standard form styling
+
+
+// Text inputs
+// -------------------------
+
+/*Change text in autofill textbox*/
+.MuiFilledInput-input{
+    padding: 24px 11px 6px!important;
+}
+
+.MuiInputBase-root{
+    background: $jdp-white!important;
+    border:1px solid $jdp-gray !important;
+    border-radius: 6px!important;
+    font-size: 16px!important;
+    font-weight: 300!important;
+    color: $jdp-body-text!important;
+    &.Mui-focused{
+        border: solid 2px $jdp-radiantblueFocus !important;
+        outline: none !important;
+    }
+    &.Mui-disabled{
+        background: $jdp-bg-light!important;
+    }
+
+    &.Mui-error{
+        border:2px solid $jdp-error!important;
+    }
+   
+}
+
+.MuiMenuItem-root{
+    border-bottom: 1px solid #ccc!important;
+}
+
+.MuiFormLabel-root{
+    &.Mui-focused{
+        color: $jdp-gray!important;
+    }
+}
+
+.MuiFilledInput-underline{
+    &::before,   &::after{
+        display: none;
+    }
+}
+
+//*Checkbox Styling *//
+
+.MuiButtonBase-root{
+    &.MuiCheckbox-colorPrimary.Mui-checked{
+        color: $jdp-radiantblueSelect;
+    }
+    &.MuiRadio-colorPrimary.Mui-checked,&.MuiRadio-colorSecondary.Mui-checked{
+        color: $jdp-radiantblueSelect;
+    }
+  
+}
+
+.MuiAutocomplete-popper{
+    border:1px solid $jdp-gray !important;
+    .MuiAutocomplete-option{
+        border-bottom: 1px solid $jdp-medgray;
+        font-size: 15px;
+    }
+    
+    .MuiAutocomplete-option[data-focus="true"]{
+        background:$jdp-list-hover!important;
+    }
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiFilledInput-root"]{
+    padding-top: 0px!important;
+}
+
+.des-redio, .acc-checkbox-wraper{
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid $jdp-medgray;
+    &.active{
+        border: 2px solid $jdp-radiantblue;
+        background: $jdp-radiantblueLight;
+    }
+    p{
+        margin: 0px;
+        margin-top: -8px;
+        margin-bottom: 10px;
+        padding-left: 30px;
+    }
+}
+
+
+

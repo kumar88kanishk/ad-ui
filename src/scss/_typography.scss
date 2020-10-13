@@ -1,0 +1,156 @@
+// don't use this mixin directly!
+// @extend the classes below instead!
+
+@mixin base-heading {
+    font-family: $font-family-headings;
+
+    &.heading--upper {
+        text-transform: uppercase;
+    }
+}
+
+@mixin base-heading-xs {
+    @include base-heading;
+    font-size: 22px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+@mixin base-heading-s {
+    @include base-heading;
+    font-size: 28px;
+    line-height: 25px;
+    font-weight: 700;
+}
+
+@mixin base-heading-m {
+    @include base-heading;
+    font-size: 33px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+@mixin base-heading-l {
+    @include base-heading;
+    font-size: 28px;
+    line-height: 25px;
+    font-weight: 700;
+}
+
+@mixin base-heading-xl {
+    @include base-heading;
+    font-size: 33px;
+    line-height: 28px;
+    font-weight: 700;
+}
+
+@mixin base-heading-xxl {
+    @include base-heading;
+    font-size: 45px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+// @extend below classes to get responsive typography
+
+.heading-xs {
+    @include base-heading-xs;
+}
+
+.heading-s {
+    @include base-heading-s;
+}
+
+.heading-m {
+    @include base-heading-m;
+}
+
+.heading-l {
+    @include base-heading-l;
+    // force upper-casing on sm view
+    //    @extend .heading--upper;
+    @include respond-to(md-down) {
+        @include base-heading-xs;
+    }
+}
+
+.heading-xl {
+    @include base-heading-xl;
+
+    @include respond-to(md-down) {
+        @include base-heading-l;
+    }
+}
+
+.heading-xxl {
+    @include base-heading-xxl;
+
+    @include respond-to(md-down) {
+        @include base-heading-xl;
+    }
+}
+
+
+// Shared body classes
+// -------------------------
+%base-body-typography-bold {
+    font-family: $font-family-body;
+    color: $jdp-body-text;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+%base-body-typography {
+    font-family: $font-family-body;
+    font-weight: 300;
+    font-size: 15px;
+    color: $jdp-body-text;
+    line-height: 18px;
+}
+
+.bh-xl{
+    @extend %base-body-typography-bold;
+    font-size: 22px;
+ 
+}
+
+.bh-l{
+    @extend %base-body-typography-bold;
+    font-size: 18px;
+ 
+}
+
+.bh-m{
+    @extend %base-body-typography-bold;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.body-copy{
+    @extend %base-body-typography;
+}
+.legal{
+    @extend %base-body-typography;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.link, a{
+    @extend %base-body-typography;
+    color: $jdp-radiantblue;
+    font-weight: 400;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline; 
+    }
+   
+}
+
+.link{
+    .MuiSvgIcon-root{
+        width: 0.6em;
+        height: 0.6em;
+        vertical-align: middle;
+    }
+}

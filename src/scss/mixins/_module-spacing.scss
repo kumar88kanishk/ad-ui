@@ -1,0 +1,54 @@
+﻿//== Spacing helpers
+//
+//## Use these standardized spacing classes when standardized spacing is called out
+
+// Standard spacing sizes
+// -------------------------
+$spacing-xs:    10px;
+$spacing-s:     20px;
+$spacing-m:     40px;
+$spacing-l:     60px;
+$spacing-xl:    80px;
+
+//$spacing-xs:    1rem;
+//$spacing-s:     2rem;
+//$spacing-m:     4rem;
+// $spacing-l:     8rem;
+// $spacing-xl:    10rem;
+
+// Margin bottom helpers
+// -------------------------
+
+@mixin spacing-xs {
+    margin-bottom: $spacing-xs;
+}
+
+@mixin spacing-s {
+    margin-bottom: $spacing-s;
+}
+
+@mixin spacing-m {
+    margin-bottom: $spacing-m;
+}
+
+@mixin spacing-l {
+    margin-bottom: $spacing-l;
+
+    @include respond-to(sm) {
+        margin-bottom: $spacing-m;
+    }
+}
+
+@mixin spacing-xl {
+    margin-bottom: $spacing-xl;
+
+    @include respond-to(sm) {
+        margin-bottom: $spacing-l;
+    }
+}
+
+.spacing-xs { @include spacing-xs; }
+.spacing-s  { @include spacing-s; }
+.spacing-m  { @include spacing-m; }
+.spacing-l  { @include spacing-l; }
+.spacing-xl { @include spacing-xl; }

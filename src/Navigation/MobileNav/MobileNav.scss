@@ -1,0 +1,56 @@
+.mobile-drawer {
+    .nav {
+        flex-direction: column;
+        .nav-item-wrap {
+            position: relative;
+            list-style-type: none;
+            display: block;
+            margin: 0;
+            .nav-item {
+                display: block;
+                width: 100%;
+                font-size: 1.8rem;
+                font-family: "Geogrotesque", sans-serif;
+                font-weight: 700;
+                padding: 1.7rem 0;
+                color: #333;
+                background-color: transparent;
+                border: none;
+                border-top: 1px solid rgba(127, 127, 127, 0.54);
+                text-align: center;
+            }
+            &:first-child {
+                .nav-item {
+                    border: none;
+                }
+            }
+            &:last-of-type {
+                position: relative;
+                right: unset;
+            }
+            .nav-dropdown-list {
+                font-family: "Geogrotesque", sans-serif;
+                font-weight: 300;
+                font-size: 1.8rem;
+                display: none;
+                margin-bottom: 1.5rem;
+                &.is-opened {
+                    display: block;
+                    padding-left: 0;
+                }
+                li {
+                    .drop-down-link {
+                        display: block;
+                        padding: 1rem;
+                        cursor: pointer;
+                        font-weight: normal;
+                        color: #000;
+                        font-size: 1.6rem;
+                        text-align: center;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}

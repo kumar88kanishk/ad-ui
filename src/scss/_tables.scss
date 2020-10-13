@@ -1,0 +1,26 @@
+.MuiTable-root{
+    font-family: $font-family-body;
+    color: $jdp-body-text!important;
+    .MuiTableCell-root{
+        border-bottom: 1px solid $jdp-medgray!important;
+    }
+    
+    .MuiTableRow-root{
+        &:hover{
+            background: $jdp-offwhite!important;
+        }
+    }
+    
+    .MuiTableCell-head{
+        padding: 16px 5px!important;
+        background: $jdp-offwhite!important;
+        color: $jdp-body-text!important;
+        font-size: 15px;
+        font-weight: 700!important; 
+    }
+    
+    .MuiTableCell-body{
+        color: $jdp-body-text!important;
+    }
+}
+

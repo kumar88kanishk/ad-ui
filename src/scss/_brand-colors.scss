@@ -1,0 +1,111 @@
+.color-plate{
+    min-height: 150px;
+    border-radius: 4px;
+    color: $jdp-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: $font-family-body;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: $jdp-black;
+    border: 1px solid $jdp-medgray;
+    &.jdp-black, &.jdp-body-text{
+        color: $jdp-white;
+    }  
+}
+
+
+
+
+.jdp-java{
+    background: $jdp-java;
+    
+}
+
+.jdp-aqua{
+    background: $jdp-aqua;
+}
+
+.jdp-electricgreen{
+    background: $jdp-electricgreen;
+}
+
+.jdp-red{
+    background: $jdp-red;
+}
+
+.jdp-java-50{
+    background: $jdp-java-50;
+}
+
+.jdp-aqua-50{
+    background: $jdp-aqua-50;
+}
+
+.jdp-electricgreen-50{
+    background: $jdp-electricgreen-50;
+}
+
+.jdp-java-30{
+    background: $jdp-java-30;
+}
+
+.jdp-aqua-30{
+    background: $jdp-aqua-30;
+}
+
+.jdp-electricgreen-30{
+    background: $jdp-electricgreen-30;
+}
+
+.jdp-java-10{
+    background: $jdp-java-10;
+}
+
+.jdp-aqua-10{
+    background: $jdp-aqua-10;
+}
+
+.jdp-electricgreen-10{
+    background: $jdp-electricgreen-10;
+}
+
+.jdp-black{
+    background: $jdp-black;
+}
+.jdp-body-text{
+    background: $jdp-body-text;
+}
+.jdp-gray{
+    background: $jdp-gray;
+}
+
+.jdp-medgray{
+  background: $jdp-medgray;   
+}
+
+.jdp-ltgray{
+    background: $jdp-ltgra;  
+}
+
+.jdp-offwhite{
+    background: $jdp-offwhite;  
+}
+
+.jdp-offwhite{
+    background: $jdp-offwhite;  
+}
+.jdp-white{
+    background: $jdp-white;  
+}
+
+.jdp-radiantblue{
+    background: $jdp-radiantblue;  
+}
+
+.jdp-error{
+    background:$jdp-error;
+}
+

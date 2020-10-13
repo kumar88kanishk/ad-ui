@@ -1,0 +1,39 @@
+.MuiDialogTitle-root{
+    margin-bottom: 20px;
+    .dialog-title{
+      margin-top: 0px;
+      margin-bottom: 15px;
+    }
+
+    .dialog-sub-title{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+}
+
+.MuiDialogContent-root{
+    padding-top:0px!important;
+    .MuiDialogContentText-root{
+        p:first-child{
+            margin-top: 0px;
+        }
+    } 
+}
+
+.MuiDialogActions-root{
+    justify-content: flex-start!important;
+}
+
+.close-dialog{
+    display: flex;
+    justify-content: flex-end!important;
+    svg{
+        cursor: pointer;
+    }
+}
+
+.MuiTypography-body1{
+    font-size: 15px!important;
+}
+

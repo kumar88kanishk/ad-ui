@@ -1,0 +1,26 @@
+﻿//== Core stylesheet
+//
+//## This should contain only core styles shared throughout the site
+//## module specific styles should go into its own module file
+
+// Import the base files
+// -------------------------
+
+// shared site variables
+@import "_variables.scss"; 
+// site mixins
+@import "_mixins.scss";
+// Our custom fonts
+@import "_fonts.scss";
+// Base typography styling
+@import "_typography.scss";
+@import "_buttons.scss";
+@import "_forms.scss"; 
+@import "_brand-colors.scss"; 
+@import "_tables.scss"; 
+@import "_app-icons.scss";
+@import "_dialog.scss ";
+
+
+
+

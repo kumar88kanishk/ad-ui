@@ -1,0 +1,81 @@
+//== Variables
+//
+// Media queries breakpoints
+// Define the breakpoints at which your layout will change, adapting to different screen sizes.
+// -------------------------
+
+// Small screen / mobile
+$screen-sm: 375px;
+$screen-sm-min: $screen-sm;
+
+// Small screen / tablet portrait
+$screen-md: 768px;
+$screen-md-min: $screen-md;
+
+// Medium screen / small desktop / tablet landscape
+$screen-lg: 1024px;
+$screen-lg-min: $screen-lg;
+
+// Large screen / wide desktop
+$screen-xl: 1280px;
+$screen-xl-min: $screen-xl;
+
+// XLarge screen / X wide desktop
+$screen-xxl: 1440px;
+$screen-xxl-min: $screen-xxl;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+$screen-lg-max: ($screen-xl-min - 1) !default;
+$screen-xl-max: ($screen-xxl-min - 1) !default;
+
+
+
+
+// Typography
+// -------------------------
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+// $text-font-path: "/Content/fonts/";
+$text-font-path: "../fonts/";
+$font-family-headings: Geogrotesque, sans-serif;
+$font-family-body: Roboto, sans-serif;
+
+// Colors
+// Standard colors used across the site
+// -------------------------
+$jdp-java: #16a7cb;
+$jdp-java-50: #87d2e5;
+$jdp-java-30: #b7e4ef;
+$jdp-java-10: #e7f6fa;
+$jdp-aqua: #23c0a8;
+$jdp-aqua-50: #80e2d4;
+$jdp-aqua-30: #b3eee5;
+$jdp-aqua-10: #e6f9f7;
+$jdp-electricgreen: #33e776;
+$jdp-electricgreen-50: #80f4bf;
+$jdp-electricgreen-30: #b3f9d9;
+$jdp-electricgreen-10: #e6fdf2;
+$jdp-red: #f53c3c;
+
+$jdp-error: $jdp-red;
+$jdp-black: #000000;
+$jdp-gray: #757575;
+$jdp-scroll-bg:#F3F8FF;
+$jdp-medgray: #cccccc;
+$jdp-ltgra:#e5e5e5;
+$jdp-list-hover: #eaf0fd; 
+$jdp-ltgray: #e5e5e5;
+$jdp-offwhite: #f3f3f3;
+$jdp-body-text: #2b2b2b;
+$jdp-radiantblue: #006BE0;
+$jdp-radiantblueFocus: #0071EB;
+$jdp-radiantblueLight: #F3F8FF;
+$jdp-radiantblueSelect:$jdp-radiantblueFocus;
+$jdp-white: #ffffff;
+$jdp-btn-bdr: #757575;
+$jdp-bg-light :#F3F3F3;
+$jdp-radiantblueHover: #0160CF;
+
+
+

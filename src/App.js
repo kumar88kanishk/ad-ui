@@ -1,26 +1,57 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ImageGalleryContextProvider from './contexts/ImageGalleryContext';
+import ActiveGalleryContextProvider from './contexts/ActiveImageContext';
+import ActiveTabContextProvider from './contexts/ActiveTabContext';
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import StyleGuide from './style-guide';
+import ImageGallery from './ImageGallery';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/style-guide">Style Guide</Link>
+            </li>
+            <li>
+              <Link to="/photo-gallery">Photo Gallery</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route path="/style-guide">
+            <StyleGuide />
+          </Route>
+          <Route path="/photo-gallery">
+            <ActiveTabContextProvider>
+              <ImageGalleryContextProvider>
+                <ActiveGalleryContextProvider>
+                  <ImageGallery />
+                </ActiveGalleryContextProvider>
+              </ImageGalleryContextProvider>
+            </ActiveTabContextProvider>
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch >
+      </div >
+    </Router >
   );
 }
 
-export default App;
+function Home() {
+  return <h2>Home</h2>;
+}

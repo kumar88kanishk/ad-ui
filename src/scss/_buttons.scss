@@ -1,0 +1,120 @@
+//== Buttons
+//
+//## Standard buttons and variations
+
+// Primary button
+// usage: <a class="btn"></a>
+// -------------------------
+
+.MuiButton-root.MuiButtonBase-root, .MuiButtonBase-root{
+    font-family: $font-family-body;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: .07rem;
+    text-align: center;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: 0.8rem 3rem;
+    
+    @include respond-to(sm) {
+        width: 100%;
+    }
+
+.MuiSvgIcon-root{
+  vertical-align: top;
+}
+
+    &.MuiButton-containedPrimary{
+        color: $jdp-white;
+        background: $jdp-radiantblue;
+        &:hover{
+            background: $jdp-radiantblueHover;
+         }
+    }
+
+   
+    // Secondary button variation
+    // usage: <a class="btn btn--secondary"></a>
+    // -------------------------
+    &.MuiButton-outlinedSecondary{
+//        padding: 0.7rem 3rem;
+        color: $jdp-radiantblue;
+        background: $jdp-white;
+        border: 2px solid $jdp-radiantblue;
+        &:hover{
+            border: 3px solid $jdp-radiantblue;
+            background: $jdp-white;
+        }
+    }
+
+    // Tertiary button variation
+    // usage: <a class="btn btn--tertiary"></a>
+    // -------------------------
+    &.MuiButton-tertiary{
+        color: $jdp-radiantblue;
+        width: auto;
+        background-color: $jdp-white;
+        border:2px solid $jdp-btn-bdr;
+       
+        &:hover{
+            border-width: 3px
+        }
+        // prevent :after element from wrapping to new line
+        /*@include respond-to(sm) {
+            width: auto;
+        }
+
+        &:after {
+            content: "\00a0";
+            background-image: url($icon-base-url + 'inline-arrow-right-red.svg');
+            padding-left: 13px;
+            background-repeat: no-repeat;
+            background-size: 8px;
+            background-position-y: 12px;
+            background-position-x: 5px;
+            display: inline-block;
+            vertical-align: bottom;
+            margin-right: -16.5px; // prevent :after element from wrapping to new line
+        }*/
+    }
+
+    &.Mui-disabled.MuiButton-root{
+        color:$jdp-btn-bdr;
+        background-color: $jdp-bg-light;
+        border: 2px solid $jdp-btn-bdr;
+       
+    }
+
+    &.Mui-scroll-btn{
+        width: 50px;
+        height: 50px;
+        min-width: auto;
+        border-radius: 50%;
+        background-color: $jdp-scroll-bg;
+        border: 2px solid $jdp-radiantblue;
+        color:$jdp-radiantblue; 
+        font-size: 25px;
+        &:hover{
+            border: 3px solid;
+        }
+    }
+
+    &.btn--block {
+        display: block;
+    }
+}
+ 
+button {
+    cursor: pointer;
+
+    &.btn {
+        border: none;
+    }
+}

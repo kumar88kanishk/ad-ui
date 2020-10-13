@@ -1,0 +1,47 @@
+﻿//== Font declarations
+//
+//## Put all font declarations here
+
+@at-root {
+
+    @import url("https://fast.fonts.net/t/1.css?apiType=css&projectid=16f3d951-bf76-48cb-bbc3-a509873dc32c");
+
+    /* @font-face {
+        font-family: 'Geogrotesque';
+        src: url('#{$text-font-path}77c5adea-c45f-4bd6-bc83-c171aa401eac.eot?#iefix');
+        src: url('#{$text-font-path}77c5adea-c45f-4bd6-bc83-c171aa401eac.eot?#iefix') format("eot"),url('#{$text-font-path}38914808-31f7-4169-a962-60b41b189056.woff2') format("woff2"),url('#{$text-font-path}ae7eda9b-5729-4029-8ea8-1f4b2feb6595.woff') format("woff"),url('#{$text-font-path}f5e7d965-e646-4ea9-8b21-bf17e3e5de42.ttf') format("truetype");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Geogrotesque';
+        src: url('#{$text-font-path}a3e2c11b-c08f-452d-98b2-82cf697c9968.eot?#iefix');
+        src: url('#{$text-font-path}a3e2c11b-c08f-452d-98b2-82cf697c9968.eot?#iefix') format("eot"),url('#{$text-font-path}133b8ec2-02fd-4afc-8d3d-027d68304c5e.woff2') format("woff2"),url('#{$text-font-path}9548811b-a57e-4d9f-abad-aeb27640450d.woff') format("woff"),url('#{$text-font-path}1a8cf960-d55c-4ac5-af4e-79ca12bca166.ttf') format("truetype");
+        font-weight: 600;
+        font-style: normal;
+    } */
+
+    @font-face {
+        font-family: 'Geogrotesque';
+        src: url('#{$text-font-path}geogrotesque-bold.woff2') format('woff2'), url('#{$text-font-path}geogrotesque-bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Geogrotesque';
+        src: url('#{$text-font-path}geogrotesque-bold.woff2') format('woff2'), url('#{$text-font-path}geogrotesque-bold.woff') format('woff');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: Roboto;
+        font-weight: 300;
+        font-display: fallback;
+        font-style: normal;
+        src: url('#{$text-font-path}Roboto-Light.ttf') format('ttf');
+        //        src: local('Roboto Light'),local('Roboto-Light'),url(/fonts/Roboto-Light.woff2) format('woff2'),url(/fonts/Roboto-Light.woff) format('woff');
+    }
+}

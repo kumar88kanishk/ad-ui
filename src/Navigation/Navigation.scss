@@ -1,0 +1,97 @@
+header {
+    padding: 1.22rem 0!important;
+    &:after {
+        content: "";
+        position: absolute;
+        height: 0.3rem;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-image: -webkit-gradient(
+            linear,
+            left top,
+            right top,
+            from(#0071eb),
+            color-stop(30%, #16a7cb),
+            color-stop(67%, #23c0a8),
+            to(#33e776)
+        );
+        background-image: linear-gradient(90deg, #0071eb, #16a7cb 30%, #23c0a8 67%, #33e776);
+        z-index: 13;
+    }    
+}
+
+.makeStyles-logo-4{
+    width: 190px!important;
+    height: 29px!important;
+}
+
+.menu-icon {
+    display: block;
+    font-size: 3rem !important;
+    color: #f53c3c;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%!important;
+    .nav-item-wrap {
+        display: inline-block;
+        margin-left: 4rem;
+        list-style-type: none;
+        &:last-of-type {
+            margin-left: auto !important;
+        }
+        .nav-item { 
+            font-size: 16px!important;
+            border: none;
+            outline-color: transparent;
+            padding: 0.5rem 1rem!important;
+            width: auto;
+            display: block;
+            font-family: "Geogrotesque", sans-serif;
+            font-weight: 700;
+            color: #333;
+            background-color: transparent;
+            text-decoration: none;
+            position: relative;
+            &.is-opened {
+                -webkit-box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
+                box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
+                &:after {
+                    content: "";
+                    height: 0.4rem;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    display: block;
+                    background: #fff;
+                    z-index: 17;
+                }
+                .nav-item-span {
+                    &:after {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            .nav-item-span {
+                &:after {
+                    content: "";
+                    margin-left: 1rem;
+                    display: inline-block;
+                    background: url(https://cdn.jdpower.com/jdp-web/ui-icons/arrow-down-darkgray-1.svg) 50% no-repeat;
+                    width: 1.4rem;
+                    height: 0.7rem;
+                    vertical-align: middle;
+                    -webkit-transition: all 0.3s;
+                    transition: all 0.3s;
+                }
+            }
+        }
+    }
+}
