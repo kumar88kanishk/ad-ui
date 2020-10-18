@@ -3,8 +3,8 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { ActiveTabContext, tabs } from "../contexts/ActiveTabContext";
-
+import { GalleryTabContext, tabs } from "../contexts/GalleryTabContext";
+import { DisplayImageContext } from "../contexts/DisplayImageContext";
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -14,13 +14,16 @@ const useStyles = makeStyles({
 
 const GalleryTabs = () => {
   const classes = useStyles();
-  
+
   const [value, setValue] = useState(0);
-  const { updateActiveTab } = useContext(ActiveTabContext);
-  
+  const { updateActiveTab } = useContext(GalleryTabContext);
+  const { setToInitialState } = useContext(DisplayImageContext);
+
   const handleChange = (event, newValue) => {
+    setToInitialState();
     setValue(newValue);
     updateActiveTab(newValue);
+
   };
 
   return (
@@ -28,16 +31,15 @@ const GalleryTabs = () => {
       <Tabs
         value={value}
         onChange={handleChange}
-        variant="fullWidth"
         indicatorColor="secondary"
         textColor="secondary"
         aria-label="icon label tabs example"
       >
         {tabs.map((tab, index) => <Tab key={index} label={tab} />)}
-        
+
       </Tabs>
     </Paper>
   );
 }
- 
+
 export default GalleryTabs;

@@ -414,6 +414,25 @@ button {
   .MuiTable-root .MuiTableCell-body {
     color: #2b2b2b !important; }
 
+.MuiTab-root {
+  font-family: Geogrotesque, sans-serif !important;
+  color: #006BE0; }
+  .MuiTab-root.MuiTab-textColorSecondary.Mui-selected {
+    font-family: Geogrotesque, sans-serif !important;
+    color: #000000;
+    font-size: 16px; }
+
+.PrivateTabIndicator-colorSecondary-5 {
+  background-color: #006BE0 !important; }
+
+.PrivateTabIndicator-root-3 {
+  height: 5px !important;
+  font-weight: 700; }
+
+.close-dialog {
+  position: absolute;
+  right: 20px; }
+
 .MuiSvgIcon-root {
   color: #006BE0; }
   .MuiSvgIcon-root .MuiSvgIcon-fontSizeLarge {

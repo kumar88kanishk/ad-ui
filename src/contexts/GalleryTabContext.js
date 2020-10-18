@@ -1,13 +1,13 @@
 /*
-Maintaing the Active Image, classless function accessible through out
+Maintaing the Active Tab, classless function accessible through out
 */
 
 import React, { createContext, useState, useEffect } from "react";
 
-export const ActiveTabContext = createContext();
+export const GalleryTabContext = createContext();
 export const tabs = ["exterior", "interior"];
 
-const ActiveTabContextProvider = (props) => {
+const GalleryTabContextProvider = (props) => {
   const initialState = "exterior";
 
   const [activeTab, setActiveTab] = useState(initialState);
@@ -23,10 +23,10 @@ const ActiveTabContextProvider = (props) => {
   }, []);
 
   return (
-    <ActiveTabContext.Provider value={{ activeTab, updateActiveTab }}>
+    <GalleryTabContext.Provider value={{ activeTab, updateActiveTab }}>
       {props.children}
-    </ActiveTabContext.Provider>
+    </GalleryTabContext.Provider>
   );
 };
 
-export default ActiveTabContextProvider;
+export default GalleryTabContextProvider;

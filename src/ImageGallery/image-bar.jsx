@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import _ from "lodash";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-
 import { ImageGalleryContext } from "../contexts/ImageGalleryContext";
-import { ActiveTabContext } from "../contexts/ActiveTabContext";
-import { ActiveImageContext } from "../contexts/ActiveImageContext";
+import { GalleryTabContext } from "../contexts/GalleryTabContext";
+import { DisplayImageContext } from "../contexts/DisplayImageContext";
+import { ImageBarContext } from "../contexts/ImageBarContext";
 
-const noOfImages = 2;
-const initialChunkIndex = 0
+import Slider from "./slider";
 const useStyles = makeStyles((theme) => ({
   large: {
     width: theme.spacing(7),
@@ -30,54 +29,68 @@ const ImageBar = () => {
   const classes = useStyles();
 
   const { images } = useContext(ImageGalleryContext);
-  const { activeTab } = useContext(ActiveTabContext);
-  const { activeImage, updateActiveImage } = useContext(ActiveImageContext);
-  const [chunkIndex, setChunkIndex] = useState(initialChunkIndex);
+  const { activeTab } = useContext(GalleryTabContext);
+  const { activeImage, updateActiveImage } = useContext(DisplayImageContext);
+  const { chunkIndex, updateChunkIndex, imagesPerChunk } = useContext(ImageBarContext);
 
   const loadImage = (index) => {
-    updateActiveImage(activeTab, index);
+    updateActiveImage(index);
   };
 
-  const imagesChunk = () =>  _.chunk(images[activeTab], noOfImages);
+  // const imagesChunk = () => images[activeTab].slice(activeImage, (activeImage + imagesPerChunk));
 
-  const nextImageRange = () => {
-    let nextIndex = chunkIndex + 1;
-    setChunkIndex(newChunkIndex(nextIndex))
-  }
+  const imagesChunk = () => _.chunk(images[activeTab], imagesPerChunk);
 
-  const newChunkIndex = (index) =>  {
-    let length = imagesChunk().length;
+  const circularChunkIndex = (arr, index) => {
+    let length = arr.length;
     return ((index % length + length) % length)
   };
 
-  const prevImageRange = () => {
-    let nextIndex = chunkIndex - 1;
-    setChunkIndex(newChunkIndex(nextIndex))
+  const nextChunkIndex = () => {
+    let nextIndex = chunkIndex + 1;
+    let newChunkIndex = circularChunkIndex(imagesChunk(), nextIndex)
+    updateChunkIndex(newChunkIndex);
   }
+
+  const prevChunkIndex = () => {
+    let prevIndex = chunkIndex + 1;
+    let newChunkIndex = circularChunkIndex(imagesChunk(), prevIndex)
+    updateChunkIndex(newChunkIndex);
+  }
+
+  const leftIcon = () => <div className='slider-control next'>
+    <ArrowForwardIosIcon className="iconSize18" onClick={() => { nextChunkIndex() }} />
+  </div>
+
+  const rightIcon = () => <div className='slider-control prev'>
+    <ArrowBackIosIcon className="iconSize18" onClick={() => { prevChunkIndex() }} />
+  </div>
 
   const imageBar = () =>
     imagesChunk()[chunkIndex].map((image, index) => {
-        let borderSize = index === activeImage[activeTab] ? 2 : 1;
-        let borderColor = index === activeImage[activeTab] ? "primary.main": "";
-
-        return <Box border={borderSize} {...defaultProps} key={index} borderColor={borderColor}>
-        <Avatar
-          alt={image.alt}
-          variant="square"
-          src={image.url}
-          className={classes.large}
-          onClick={() => {loadImage(index)}}
-        />
-      </Box>
-      });
+      let biggerIndex = (chunkIndex * imagesPerChunk) + index;
+      let borderSize = biggerIndex === activeImage ? 2 : 1;
+      let borderColor = biggerIndex === activeImage ? "primary.main" : "";
+      return (
+        <Box border={borderSize} {...defaultProps} key={biggerIndex} borderColor={borderColor}>
+          <Avatar
+            alt={image.alt}
+            variant="square"
+            src={image.url}
+            className={classes.large}
+            onClick={() => { loadImage(biggerIndex) }}
+          />
+        </Box>
+      )
+    });
 
   return (
-    <div className="marginT30">
-      <ArrowForwardIosIcon onClick={() => {nextImageRange()}}/>
+    <div className="marginT30 img-thumb">
+      {leftIcon()}
       <Box display="flex" justifyContent="center">
-        {imageBar()}
+        <Slider ImageBar={imageBar} />
       </Box>
-      <ArrowBackIosIcon onClick={() => {prevImageRange()}}/>
+      {rightIcon()}
     </div>
   );
 };

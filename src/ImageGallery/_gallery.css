@@ -1,0 +1,37 @@
+.relative {
+  position: relative;
+}
+
+.activeImageWrap {
+  position: relative;
+  border: 1px solid #ccc;
+}
+.activeImageWrap img {
+  max-height: 499px;
+  min-height: 499px;
+}
+
+.slider-control {
+  position: absolute;
+  top: 40%;
+  z-index: 99;
+  background-color: rgba(204, 204, 204, 0.3);
+  padding: 12px;
+}
+.slider-control.next {
+  right: 18px;
+}
+.slider-control.prev {
+  left: 18px;
+}
+.slider-control .MuiSvgIcon-root {
+  color: #fff;
+}
+
+.img-thumb {
+  position: relative;
+}
+.img-thumb .slider-control {
+  background-color: #ccc;
+  padding: 5px 5px 2px 5px;
+}

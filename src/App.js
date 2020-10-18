@@ -1,7 +1,8 @@
 import React from 'react';
 import ImageGalleryContextProvider from './contexts/ImageGalleryContext';
-import ActiveGalleryContextProvider from './contexts/ActiveImageContext';
-import ActiveTabContextProvider from './contexts/ActiveTabContext';
+import GalleryTabContextProvider from './contexts/GalleryTabContext';
+import DisplayImageContextProvider from './contexts/DisplayImageContext';
+import ImageBarContextProvider from './contexts/ImageBarContext';
 
 import {
   BrowserRouter as Router,
@@ -35,13 +36,15 @@ export default function App() {
             <StyleGuide />
           </Route>
           <Route path="/photo-gallery">
-            <ActiveTabContextProvider>
+            <GalleryTabContextProvider>
               <ImageGalleryContextProvider>
-                <ActiveGalleryContextProvider>
-                  <ImageGallery />
-                </ActiveGalleryContextProvider>
+                <ImageBarContextProvider>
+                  <DisplayImageContextProvider>
+                    <ImageGallery />
+                  </DisplayImageContextProvider>
+                </ImageBarContextProvider>
               </ImageGalleryContextProvider>
-            </ActiveTabContextProvider>
+            </GalleryTabContextProvider>
           </Route>
           <Route path="/">
             <Home />

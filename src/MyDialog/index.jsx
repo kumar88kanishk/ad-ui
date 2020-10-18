@@ -1,12 +1,21 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles({
+  relative: {
+    position: 'relative',
+  },
+});
 
 export default function MyDialog(props) {
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -16,7 +25,7 @@ export default function MyDialog(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { ActiveImage, ImageBar, GalleryTabs } = props;
+  const { DisplayImage, ImageBar, GalleryTabs } = props;
   return (
     <React.Fragment>
       <Button
@@ -28,6 +37,8 @@ export default function MyDialog(props) {
       </Button>
       <Dialog
         open={open}
+        fullWidth={true}
+        maxWidth='lg'
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -40,8 +51,14 @@ export default function MyDialog(props) {
         </DialogTitle>
         <DialogContent>
           <GalleryTabs></GalleryTabs>
-          <ActiveImage></ActiveImage>
-          <ImageBar></ImageBar>
+          <Grid container spacing={4} className="marginT20">
+            <Grid item xs={9} className={classes.relative}>
+              <DisplayImage></DisplayImage>
+              <ImageBar></ImageBar>
+
+            </Grid>
+            <Grid item xs={3}> Advertisement </Grid>
+          </Grid>
           <DialogContentText id="alert-dialog-description"></DialogContentText>
         </DialogContent>
       </Dialog>

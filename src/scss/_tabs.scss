@@ -1,0 +1,26 @@
+.MuiTab-root{
+    font-family: $font-family-headings!important;
+    color: $jdp-radiantblue;
+    &.MuiTab-textColorSecondary.Mui-selected{
+        font-family: $font-family-headings!important;
+        color: $jdp-black;
+        font-size: 16px;
+
+    }
+
+}
+
+.PrivateTabIndicator-colorSecondary-5{
+    background-color: $jdp-radiantblue!important;
+}
+
+.PrivateTabIndicator-root-3{
+    height: 5px!important;
+    font-weight: 700;
+}
+
+.close-dialog{
+    position: absolute;
+    right: 20px;
+}
+
