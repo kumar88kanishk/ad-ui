@@ -1,22 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import _ from "lodash";
 import { makeStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
-import Box from "@material-ui/core/Box";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import Avatar from "@material-ui/core/Avatar";
+import Box from "@material-ui/core/Box";
+
 import { ImageGalleryContext } from "../contexts/ImageGalleryContext";
 import { GalleryTabContext } from "../contexts/GalleryTabContext";
 import { DisplayImageContext } from "../contexts/DisplayImageContext";
 import { ImageBarContext } from "../contexts/ImageBarContext";
+import { ImageBarSliderContext } from "../contexts/ImageBarSliderContext";
+import { DisplayImageSliderContext } from "../contexts/DisplayImageSliderContext";
 
 import Slider from "./slider";
-const useStyles = makeStyles((theme) => ({
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
-  },
-}));
+
+import { circularIndex, swap } from "./utils";
 
 const defaultProps = {
   bgcolor: "background.paper",
@@ -25,6 +24,19 @@ const defaultProps = {
   borderColor: "text.primary",
 };
 
+const useStyles = makeStyles((theme) => ({
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+  wrapper: {
+    padding: "0" + theme.spacing(50),
+    display: "flex"
+  },
+}));
+
+
+
 const ImageBar = () => {
   const classes = useStyles();
 
@@ -32,65 +44,86 @@ const ImageBar = () => {
   const { activeTab } = useContext(GalleryTabContext);
   const { activeImage, updateActiveImage } = useContext(DisplayImageContext);
   const { chunkIndex, updateChunkIndex, imagesPerChunk } = useContext(ImageBarContext);
-
+  const { IBsliderChecked, updateIBsliderChecked, IBsliderDirection, updateIBsliderDirection } = useContext(ImageBarSliderContext);
+  const { DIsliderChecked, updateDIsliderChecked, updateDIsliderDirection } = useContext(DisplayImageSliderContext);
   const loadImage = (index) => {
     updateActiveImage(index);
   };
 
-  // const imagesChunk = () => images[activeTab].slice(activeImage, (activeImage + imagesPerChunk));
-
   const imagesChunk = () => _.chunk(images[activeTab], imagesPerChunk);
 
-  const circularChunkIndex = (arr, index) => {
-    let length = arr.length;
-    return ((index % length + length) % length)
-  };
+  useEffect(() => {
+    const sliderIntialState = Array.from({ length: imagesChunk().length - 1 }, i => i = false);
+    updateIBsliderChecked([...IBsliderChecked, ...sliderIntialState]);
+  }, []);
 
+  const updateIBsliderProps = (i, direction) => {
+    let newStateIBSlider = swap(IBsliderChecked, chunkIndex, i)
+    updateIBsliderChecked(newStateIBSlider);
+    updateIBsliderDirection(direction);
+  }
+
+  const updateDIsliderProps = (i, direction) => {
+    let newStateDIslider = swap(DIsliderChecked, activeImage, i)
+    updateDIsliderChecked(newStateDIslider);
+    updateDIsliderDirection(direction);
+  }
+
+  console.log("=========>IB", IBsliderChecked)
   const nextChunkIndex = () => {
     let nextIndex = chunkIndex + 1;
-    let newChunkIndex = circularChunkIndex(imagesChunk(), nextIndex)
+    let newChunkIndex = circularIndex(imagesChunk(), nextIndex)
     updateChunkIndex(newChunkIndex);
+    updateIBsliderProps(newChunkIndex, "right")
+    updateDIsliderProps(newChunkIndex, "right");
   }
 
   const prevChunkIndex = () => {
-    let prevIndex = chunkIndex + 1;
-    let newChunkIndex = circularChunkIndex(imagesChunk(), prevIndex)
+    let prevIndex = chunkIndex - 1;
+    let newChunkIndex = circularIndex(imagesChunk(), prevIndex)
     updateChunkIndex(newChunkIndex);
+    updateIBsliderProps(newChunkIndex, "left")
+    updateDIsliderProps(newChunkIndex, "left");
   }
 
-  const leftIcon = () => <div className='slider-control next'>
+  const prevIcon = () => <div className='slider-control \'>
     <ArrowForwardIosIcon className="iconSize18" onClick={() => { nextChunkIndex() }} />
   </div>
 
-  const rightIcon = () => <div className='slider-control prev'>
+  const nextIcon = () => <div className='slider-control prev'>
     <ArrowBackIosIcon className="iconSize18" onClick={() => { prevChunkIndex() }} />
   </div>
 
-  const imageBar = () =>
+  const imageBarComponent = ( bs, bc, img, i, loadImage) => <div className={classes.wrapper}>
+    <Box border={bs} {...defaultProps} bc={bc}>
+      <Avatar
+        alt={img.alt}
+        variant="square"
+        src={img.url}
+        className={classes.large}
+        onClick={() => { loadImage(i) }}
+      />
+    </Box>
+  </div>
+  const slides = () =>
     imagesChunk()[chunkIndex].map((image, index) => {
       let biggerIndex = (chunkIndex * imagesPerChunk) + index;
       let borderSize = biggerIndex === activeImage ? 2 : 1;
       let borderColor = biggerIndex === activeImage ? "primary.main" : "";
+
       return (
-        <Box border={borderSize} {...defaultProps} key={biggerIndex} borderColor={borderColor}>
-          <Avatar
-            alt={image.alt}
-            variant="square"
-            src={image.url}
-            className={classes.large}
-            onClick={() => { loadImage(biggerIndex) }}
-          />
-        </Box>
+        <Slider key={biggerIndex}
+          checked={IBsliderChecked[chunkIndex]}
+          direction={IBsliderDirection}
+          children={imageBarComponent( borderSize, borderColor, image, index, loadImage)} />
       )
     });
 
   return (
     <div className="marginT30 img-thumb">
-      {leftIcon()}
-      <Box display="flex" justifyContent="center">
-        <Slider ImageBar={imageBar} />
-      </Box>
-      {rightIcon()}
+      {prevIcon()}
+      {slides()}
+      {nextIcon()}
     </div>
   );
 };

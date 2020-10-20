@@ -3,7 +3,8 @@ import ImageGalleryContextProvider from './contexts/ImageGalleryContext';
 import GalleryTabContextProvider from './contexts/GalleryTabContext';
 import DisplayImageContextProvider from './contexts/DisplayImageContext';
 import ImageBarContextProvider from './contexts/ImageBarContext';
-
+import ImageBarSliderContext from './contexts/ImageBarSliderContext';
+import DisplayImageSliderContextProvider from './contexts/DisplayImageSliderContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -37,13 +38,19 @@ export default function App() {
           </Route>
           <Route path="/photo-gallery">
             <GalleryTabContextProvider>
+
               <ImageGalleryContextProvider>
-                <ImageBarContextProvider>
-                  <DisplayImageContextProvider>
-                    <ImageGallery />
-                  </DisplayImageContextProvider>
-                </ImageBarContextProvider>
+                <ImageBarSliderContext >
+                  <ImageBarContextProvider>
+                    <DisplayImageSliderContextProvider>
+                      <DisplayImageContextProvider>
+                        <ImageGallery />
+                      </DisplayImageContextProvider>
+                    </DisplayImageSliderContextProvider>
+                  </ImageBarContextProvider>
+                </ImageBarSliderContext>
               </ImageGalleryContextProvider>
+
             </GalleryTabContextProvider>
           </Route>
           <Route path="/">
