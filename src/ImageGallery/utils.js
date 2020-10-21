@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const circularIndex = (arr, index) => {
 	let length = arr.length;
 	return ((index % length + length) % length)
@@ -11,3 +13,9 @@ export const swap = (arr, x,y) =>  {
   arr[y] = b;
   return arr;
 }
+
+export const firstTrueIndex = (arr) => arr.indexOf(true);
+
+export const chunks = (arr, c) => _.chunk(arr, c);
+
+export const populateFalseArray = (l) =>  Array.from({ length:l - 1 }, (i) => i = false);

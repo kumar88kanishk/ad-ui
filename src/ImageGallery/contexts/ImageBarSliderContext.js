@@ -3,15 +3,15 @@
 Maintaing the Slider Context, classless function accessible through out
 */
 
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { ImageGalleryContext } from "./ImageGalleryContext";
 
 export const ImageBarSliderContext = createContext();
 
 const ImageBarSliderContextProvider = (props) => {
-	const initialChecked = [true];
+	const { imageBarSlider } = useContext(ImageGalleryContext);
 	const intitalDirection = "right";
-
-	const [IBsliderChecked, setIBsliderChecked] = useState(initialChecked);
+	const [IBsliderChecked, setIBsliderChecked] = useState(imageBarSlider);
 	const [IBsliderDirection, setIBsliderDirection] = useState(intitalDirection);
 
 	const updateIBsliderChecked = (state) => {
@@ -23,11 +23,8 @@ const ImageBarSliderContextProvider = (props) => {
 	};
 
 	useEffect(() => {
-		return () => {
-			updateIBsliderChecked(initialChecked);
-			updateIBsliderDirection(intitalDirection)
-		}
-	}, []);
+		updateIBsliderChecked(imageBarSlider);
+	}, [imageBarSlider])
 
 	return (
 		<ImageBarSliderContext.Provider value={{ IBsliderChecked, updateIBsliderChecked, IBsliderDirection, updateIBsliderDirection }}>
@@ -35,5 +32,6 @@ const ImageBarSliderContextProvider = (props) => {
 		</ImageBarSliderContext.Provider>
 	)
 }
+
 
 export default ImageBarSliderContextProvider;

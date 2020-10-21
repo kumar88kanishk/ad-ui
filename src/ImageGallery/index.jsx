@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,7 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from '@material-ui/core/Grid';
-import { ImageGalleryContext } from "../contexts/ImageGalleryContext";
+
 import DisplayImage from "./display-image";
 import ImageBar from "./image-bar";
 import GalleryTabs from "./gallery-tabs";
@@ -20,10 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-
-
 const ImageGallery = () => {
-  const { updateImageList } = useContext(ImageGalleryContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -34,48 +31,6 @@ const ImageGallery = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-
-  useEffect(() => {
-    updateImageList({
-      exterior: [
-        {
-          url: "/images/1.jpg",
-          alt: "1.jpg",
-        },
-        {
-          url: "/images/2.jpg",
-          alt: "2.jpg",
-        },
-        {
-          url: "/images/3.jpg",
-          alt: "3.jpg",
-        },
-        {
-          url: "/images/4.jpg",
-          alt: "4.jpg",
-        },
-        {
-          url: "/images/5.jpg",
-          alt: "5.jpg",
-        },
-      ],
-      interior: [
-        {
-          url: "/images/4.jpg",
-          alt: "4.jpg",
-        },
-        {
-          url: "/images/5.jpg",
-          alt: "5.jpg",
-        },
-        {
-          url: "/images/6.jpg",
-          alt: "6.jpg",
-        },
-      ],
-    });
-  }, []);
 
   return (
     <React.Fragment>

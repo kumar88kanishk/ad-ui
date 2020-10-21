@@ -1,10 +1,8 @@
 import React from 'react';
-import ImageGalleryContextProvider from './contexts/ImageGalleryContext';
-import GalleryTabContextProvider from './contexts/GalleryTabContext';
-import DisplayImageContextProvider from './contexts/DisplayImageContext';
-import ImageBarContextProvider from './contexts/ImageBarContext';
-import ImageBarSliderContext from './contexts/ImageBarSliderContext';
-import DisplayImageSliderContextProvider from './contexts/DisplayImageSliderContext';
+import ImageGalleryContextProvider from './ImageGallery/contexts/ImageGalleryContext';
+import GalleryTabContextProvider from './ImageGallery/contexts/GalleryTabContext';
+import ImageBarSliderContext from './ImageGallery/contexts/ImageBarSliderContext';
+import DisplayImageSliderContextProvider from './ImageGallery/contexts/DisplayImageSliderContext';
 import {
   BrowserRouter as Router,
   Switch,
@@ -38,19 +36,13 @@ export default function App() {
           </Route>
           <Route path="/photo-gallery">
             <GalleryTabContextProvider>
-
               <ImageGalleryContextProvider>
                 <ImageBarSliderContext >
-                  <ImageBarContextProvider>
-                    <DisplayImageSliderContextProvider>
-                      <DisplayImageContextProvider>
-                        <ImageGallery />
-                      </DisplayImageContextProvider>
-                    </DisplayImageSliderContextProvider>
-                  </ImageBarContextProvider>
+                  <DisplayImageSliderContextProvider>
+                    <ImageGallery />
+                  </DisplayImageSliderContextProvider>
                 </ImageBarSliderContext>
               </ImageGalleryContextProvider>
-
             </GalleryTabContextProvider>
           </Route>
           <Route path="/">
