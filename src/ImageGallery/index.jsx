@@ -56,7 +56,7 @@ const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
     updateIBsliderChecked([true, ...populateFalseArray(imageChunks.length - 1)])
     updateChunkSize(chunkSize);
 
-  }, [tabs, defaultTab, imagesList, chunkSize]);
+  }, []);
 
   return (
     <React.Fragment>

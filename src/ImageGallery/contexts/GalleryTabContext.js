@@ -2,7 +2,7 @@
 Maintaing the Active Tab, classless function accessible through out
 */
 
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const GalleryTabContext = createContext();
 

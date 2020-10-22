@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -7,13 +7,12 @@ import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
 
 import { ImageGalleryContext } from "./contexts/ImageGalleryContext";
-import { GalleryTabContext } from "./contexts/GalleryTabContext";
 import { ImageBarSliderContext } from "./contexts/ImageBarSliderContext";
 import { DisplayImageSliderContext } from "./contexts/DisplayImageSliderContext";
 
 import Slider from "./slider";
 
-import { circularIndex, swap, firstTrueIndex, chunks } from "./utils";
+import { circularIndex, swap, firstTrueIndex } from "./utils";
 
 const defaultProps = {
   bgcolor: "background.paper",

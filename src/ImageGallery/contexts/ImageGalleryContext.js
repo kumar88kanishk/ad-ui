@@ -40,7 +40,7 @@ const ImageGalleryContextProvider = (props) => {
       updateImageChunks(imageChunks);
     }
 
-  }, [activeTab])
+  }, [activeTab, chunkSize, images])
 
   return (
     <ImageGalleryContext.Provider value={{ images, imageChunks,chunkSize, updateImageList, updateChunkSize, updateImageChunks }}>
