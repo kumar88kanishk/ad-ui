@@ -11,7 +11,6 @@ import { GalleryTabContext } from "./contexts/GalleryTabContext";
 import { ImageBarSliderContext } from "./contexts/ImageBarSliderContext";
 import { DisplayImageSliderContext } from "./contexts/DisplayImageSliderContext";
 
-import { constants } from "./constants";
 import Slider from "./slider";
 
 import { circularIndex, swap, firstTrueIndex, chunks } from "./utils";
@@ -38,9 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const ImageBar = () => {
   const classes = useStyles();
 
-  const { imageChunks } = useContext(ImageGalleryContext);
-
-  const { imagesPerChunk } = constants;
+  const { imageChunks, chunkSize } = useContext(ImageGalleryContext);
   const { IBsliderChecked, updateIBsliderChecked, IBsliderDirection, updateIBsliderDirection } = useContext(ImageBarSliderContext);
   const { DIsliderChecked, updateDIsliderChecked, updateDIsliderDirection } = useContext(DisplayImageSliderContext);
 
@@ -48,7 +45,7 @@ const ImageBar = () => {
   const currentDIindex = firstTrueIndex(DIsliderChecked);
 
   const loadImage = (i) => {
-    let nextDIindex = (currentIBindex * imagesPerChunk) + i;
+    let nextDIindex = (currentIBindex * chunkSize) + i;
     if (nextDIindex !== currentDIindex) {
       let newStateDIslider = swap(DIsliderChecked, currentDIindex, nextDIindex);
       updateDIsliderState(newStateDIslider, "right")
@@ -65,16 +62,13 @@ const ImageBar = () => {
   };
 
   const nextGallery = () => {
-    console.log("-->", IBsliderChecked, currentIBindex);
+   
     let nextIBindex = circularIndex(IBsliderChecked, currentIBindex + 1);
     let newStateIBslider = swap(IBsliderChecked, currentIBindex, nextIBindex);
     updateIBsliderState(newStateIBslider, "right");
-
     
-    let nextDIindex = nextIBindex * imagesPerChunk;
-    console.log("-->nextDIindex", nextIBindex);
+    let nextDIindex = nextIBindex * chunkSize;
     if (nextDIindex !== currentDIindex) {
-      console.log("-->");
       let newStateDIslider = swap(DIsliderChecked, currentDIindex, nextDIindex);
       updateDIsliderState(newStateDIslider, "right")
     }
@@ -85,7 +79,7 @@ const ImageBar = () => {
     let newStateIBslider = swap(IBsliderChecked, currentIBindex, prevIBindex);
     updateIBsliderState(newStateIBslider, "left");
 
-    let prevDIindex = prevIBindex * imagesPerChunk;
+    let prevDIindex = prevIBindex * chunkSize;
     if (prevDIindex !== currentDIindex) {
       let newStateDIslider = swap(DIsliderChecked, currentDIindex, prevDIindex);
       updateDIsliderState(newStateDIslider, "right")
@@ -112,7 +106,7 @@ const ImageBar = () => {
     </Box>
   </div>
   const slides = () => imageChunks[currentIBindex].map((image, index) => {
-    let biggerIndex = (currentIBindex * imagesPerChunk) + index;
+    let biggerIndex = (currentIBindex * chunkSize) + index;
     let borderSize = biggerIndex === currentDIindex ? 2 : 1;
     let borderColor = biggerIndex === currentDIindex ? "primary.main" : "";
 

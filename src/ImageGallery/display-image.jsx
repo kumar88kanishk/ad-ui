@@ -7,7 +7,6 @@ import { GalleryTabContext } from './contexts/GalleryTabContext';
 import { ImageGalleryContext } from './contexts/ImageGalleryContext';
 import { DisplayImageSliderContext } from './contexts/DisplayImageSliderContext';
 import { ImageBarSliderContext } from './contexts/ImageBarSliderContext';
-import { constants } from "./constants";
 import Slider from './slider';
 
 
@@ -24,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const DisplayImage = () => {
   const classes = useStyles();
   const { activeTab } = useContext(GalleryTabContext);
-  const { images } = useContext(ImageGalleryContext);
-  const { imagesPerChunk } = constants;
+  const { images, chunkSize } = useContext(ImageGalleryContext);
   const {
     DIsliderChecked, updateDIsliderChecked, DIsliderDirection, updateDIsliderDirection,
   } = useContext(DisplayImageSliderContext);
@@ -51,8 +49,7 @@ const DisplayImage = () => {
     let nextDIindex = circularIndex(DIsliderChecked, currentDIindex + 1);
     let newStateDIslider = swap(DIsliderChecked, currentDIindex, nextDIindex);
     updateDIsliderState(newStateDIslider, "right");
-
-    let nextIbindex = Math.trunc(nextDIindex / imagesPerChunk);
+    let nextIbindex = Math.trunc(nextDIindex / chunkSize);
     if (nextIbindex !== currentIBindex) {
       let newStateIBslider = swap(IBsliderChecked, currentIBindex, nextIbindex);
       updateIBsliderState(newStateIBslider, "right")
@@ -64,7 +61,7 @@ const DisplayImage = () => {
     let newStateDIslider = swap(DIsliderChecked, currentDIindex, prevDIindex);
     updateDIsliderState(newStateDIslider, "left");
 
-    let prevIbindex = Math.trunc(prevDIindex / imagesPerChunk);
+    let prevIbindex = Math.trunc(prevDIindex / chunkSize);
     if (prevIbindex !== currentIBindex) {
       let newStateIBslider = swap(IBsliderChecked, currentIBindex, prevIbindex);
       updateIBsliderState(newStateIBslider, "right");

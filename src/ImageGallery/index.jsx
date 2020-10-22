@@ -9,7 +9,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import Grid from '@material-ui/core/Grid';
 import { ImageGalleryContext } from "./contexts/ImageGalleryContext";
 import { GalleryTabContext } from "./contexts/GalleryTabContext";
-import { chunks  as createChunks } from "./utils";
+import { DisplayImageSliderContext } from "./contexts/DisplayImageSliderContext";
+import { ImageBarSliderContext } from "./contexts/ImageBarSliderContext";
+
+import { chunks as createChunks, populateFalseArray } from "./utils";
 
 import DisplayImage from "./display-image";
 import ImageBar from "./image-bar";
@@ -28,8 +31,10 @@ const useStyles = makeStyles({
 });
 
 const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
-  const { updateImageList, updateChunkSize, updateSliderProps, updateImageChunks, images } = useContext(ImageGalleryContext);
+  const { updateImageList, updateChunkSize, updateImageChunks } = useContext(ImageGalleryContext);
   const { updateActiveTab, updateTabs } = useContext(GalleryTabContext);
+  const { updateDIsliderChecked } = useContext(DisplayImageSliderContext);
+  const { updateIBsliderChecked } = useContext(ImageBarSliderContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -47,9 +52,10 @@ const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
     updateActiveTab(defaultTab);
     updateImageList(imagesList);
     updateImageChunks(imageChunks);
-    updateSliderProps(imagesList, imageChunks, defaultTab)
+    updateDIsliderChecked([true, ...populateFalseArray(imagesList[defaultTab].length - 1)])
+    updateIBsliderChecked([true, ...populateFalseArray(imageChunks.length - 1)])
     updateChunkSize(chunkSize);
-    
+
   }, [tabs, defaultTab, imagesList, chunkSize]);
 
   return (
