@@ -39,7 +39,44 @@ export default function App() {
               <ImageGalleryContextProvider>
                 <ImageBarSliderContext >
                   <DisplayImageSliderContextProvider>
-                    <ImageGallery />
+                    <ImageGallery imagesList={{
+                      exterior: [
+                        {
+                          url: "/images/1.jpg",
+                          alt: "1.jpg",
+                        },
+                        {
+                          url: "/images/2.jpg",
+                          alt: "2.jpg",
+                        },
+                        {
+                          url: "/images/3.jpg",
+                          alt: "3.jpg",
+                        },
+                        {
+                          url: "/images/4.jpg",
+                          alt: "4.jpg",
+                        },
+                        {
+                          url: "/images/5.jpg",
+                          alt: "5.jpg",
+                        },
+                      ],
+                      interior: [
+                        {
+                          url: "/images/4.jpg",
+                          alt: "4.jpg",
+                        },
+                        {
+                          url: "/images/5.jpg",
+                          alt: "5.jpg",
+                        },
+                        {
+                          url: "/images/6.jpg",
+                          alt: "6.jpg",
+                        },
+                      ],
+                    }} tabs={["exterior", "interior"]} defaultTab={"exterior"} chunkSize={2} />
                   </DisplayImageSliderContextProvider>
                 </ImageBarSliderContext>
               </ImageGalleryContextProvider>

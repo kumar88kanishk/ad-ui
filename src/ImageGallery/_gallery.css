@@ -1,15 +1,19 @@
 .relative {
   position: relative;
 }
-
+.flex{
+  display: flex;
+}
 .activeImageWrap {
   position: relative;
   border: 1px solid #ccc;
-}
-.activeImageWrap img {
   max-height: 499px;
-  min-height: 499px;
+  overflow: hidden;
 }
+ .activeImageWrap img {
+  max-height: 499px;
+ 
+} 
 
 .slider-control {
   position: absolute;
@@ -30,8 +34,14 @@
 
 .img-thumb {
   position: relative;
+  display: flex;
 }
 .img-thumb .slider-control {
   background-color: #ccc;
   padding: 5px 5px 2px 5px;
+}
+
+.img-thumb .slidePanel{
+  display: flex;
+  padding: 0 50px;
 }

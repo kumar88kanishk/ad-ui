@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -7,6 +7,9 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CloseIcon from "@material-ui/icons/Close";
 import Grid from '@material-ui/core/Grid';
+import { ImageGalleryContext } from "./contexts/ImageGalleryContext";
+import { GalleryTabContext } from "./contexts/GalleryTabContext";
+import { chunks  as createChunks } from "./utils";
 
 import DisplayImage from "./display-image";
 import ImageBar from "./image-bar";
@@ -18,9 +21,15 @@ const useStyles = makeStyles({
   relative: {
     position: 'relative',
   },
+  galleryWrap: {
+    overflow: 'Hidden',
+    position: 'relative'
+  }
 });
 
-const ImageGallery = () => {
+const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
+  const { updateImageList, updateChunkSize, updateSliderProps, updateImageChunks, images } = useContext(ImageGalleryContext);
+  const { updateActiveTab, updateTabs } = useContext(GalleryTabContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -31,6 +40,17 @@ const ImageGallery = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    let imageChunks = createChunks(imagesList[defaultTab], chunkSize);
+    updateTabs(tabs)
+    updateActiveTab(defaultTab);
+    updateImageList(imagesList);
+    updateImageChunks(imageChunks);
+    updateSliderProps(imagesList, imageChunks, defaultTab)
+    updateChunkSize(chunkSize);
+    
+  }, [tabs, defaultTab, imagesList, chunkSize]);
 
   return (
     <React.Fragment>
@@ -59,7 +79,7 @@ const ImageGallery = () => {
         <DialogContent>
           <GalleryTabs></GalleryTabs>
           <Grid container spacing={4} className="marginT20">
-            <Grid item xs={9} className={classes.relative}>
+            <Grid item xs={9} className={classes.galleryWrap}>
               <DisplayImage></DisplayImage>
               <ImageBar></ImageBar>
 

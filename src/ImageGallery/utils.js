@@ -18,4 +18,4 @@ export const firstTrueIndex = (arr) => arr.indexOf(true);
 
 export const chunks = (arr, c) => _.chunk(arr, c);
 
-export const populateFalseArray = (l) =>  Array.from({ length:l - 1 }, (i) => i = false);
+export const populateFalseArray = (l) =>  Array.from({ length:l }, (i) => i = false);

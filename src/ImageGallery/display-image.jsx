@@ -51,7 +51,7 @@ const DisplayImage = () => {
     let nextDIindex = circularIndex(DIsliderChecked, currentDIindex + 1);
     let newStateDIslider = swap(DIsliderChecked, currentDIindex, nextDIindex);
     updateDIsliderState(newStateDIslider, "right");
-    
+
     let nextIbindex = Math.trunc(nextDIindex / imagesPerChunk);
     if (nextIbindex !== currentIBindex) {
       let newStateIBslider = swap(IBsliderChecked, currentIBindex, nextIbindex);
@@ -85,7 +85,6 @@ const DisplayImage = () => {
     direction={DIsliderDirection}
     children={displayedImage(image)}
   />);
-
   return (
     <React.Fragment>
       <div className="slider-control next">

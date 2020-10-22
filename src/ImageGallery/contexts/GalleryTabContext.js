@@ -5,25 +5,22 @@ Maintaing the Active Tab, classless function accessible through out
 import React, { createContext, useState, useEffect } from "react";
 
 export const GalleryTabContext = createContext();
-export const tabs = ["exterior", "interior"];
 
 const GalleryTabContextProvider = (props) => {
   const initialState = "exterior";
 
   const [activeTab, setActiveTab] = useState(initialState);
+  const [tabs, setTabs] = useState([]);
 
-  const updateActiveTab = (imageIndex) => {
-    setActiveTab(tabs[imageIndex]);
+  const updateTabs = (list) => {
+    setTabs(list);
+  }
+  const updateActiveTab = (tab) => {
+    setActiveTab(tab);
   };
 
-  useEffect(() => {
-    return () => {
-      updateActiveTab(initialState)
-    }
-  }, []);
-
   return (
-    <GalleryTabContext.Provider value={{ activeTab, updateActiveTab }}>
+    <GalleryTabContext.Provider value={{ activeTab, updateActiveTab, updateTabs, tabs }}>
       {props.children}
     </GalleryTabContext.Provider>
   );

@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { GalleryTabContext, tabs } from "./contexts/GalleryTabContext";
+import { GalleryTabContext } from "./contexts/GalleryTabContext";
 
 const useStyles = makeStyles({
   root: {
@@ -13,16 +13,16 @@ const useStyles = makeStyles({
 });
 
 const GalleryTabs = () => {
+  
+  const { updateActiveTab, tabs, activeTab } = useContext(GalleryTabContext);
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const { updateActiveTab } = useContext(GalleryTabContext);
+  const [value, setValue] = useState(tabs.indexOf(activeTab));
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    updateActiveTab(newValue);
-
+    updateActiveTab(tabs[newValue]);
   };
-
+  
   return (
     <Paper square className={classes.root}>
       <Tabs
@@ -33,7 +33,6 @@ const GalleryTabs = () => {
         aria-label="icon label tabs example"
       >
         {tabs.map((tab, index) => <Tab key={index} label={tab} />)}
-
       </Tabs>
     </Paper>
   );
