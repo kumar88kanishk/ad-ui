@@ -53,14 +53,6 @@ export default function App() {
                           url: "/images/3.jpg",
                           alt: "3.jpg",
                         },
-                        {
-                          url: "/images/4.jpg",
-                          alt: "4.jpg",
-                        },
-                        {
-                          url: "/images/5.jpg",
-                          alt: "5.jpg",
-                        },
                       ],
                       interior: [
                         {

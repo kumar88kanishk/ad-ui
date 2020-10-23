@@ -35,9 +35,10 @@ const ImageGalleryContextProvider = (props) => {
   }
 
   useEffect(() => {
+    
     if (images[activeTab].length && activeTab) {
-      let imageChunks = createChunks(images[activeTab], chunkSize);
-      updateImageChunks(imageChunks);
+      let ic = createChunks(images[activeTab], chunkSize);
+      updateImageChunks(ic);
     }
 
   }, [activeTab, chunkSize, images])

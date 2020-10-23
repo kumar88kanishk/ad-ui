@@ -9,10 +9,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import Grid from '@material-ui/core/Grid';
 import { ImageGalleryContext } from "./contexts/ImageGalleryContext";
 import { GalleryTabContext } from "./contexts/GalleryTabContext";
-import { DisplayImageSliderContext } from "./contexts/DisplayImageSliderContext";
-import { ImageBarSliderContext } from "./contexts/ImageBarSliderContext";
-
-import { chunks as createChunks, populateFalseArray } from "./utils";
 
 import DisplayImage from "./display-image";
 import ImageBar from "./image-bar";
@@ -31,10 +27,8 @@ const useStyles = makeStyles({
 });
 
 const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
-  const { updateImageList, updateChunkSize, updateImageChunks } = useContext(ImageGalleryContext);
-  const { updateActiveTab, updateTabs } = useContext(GalleryTabContext);
-  const { updateDIsliderChecked } = useContext(DisplayImageSliderContext);
-  const { updateIBsliderChecked } = useContext(ImageBarSliderContext);
+  const { updateImageList, updateChunkSize } = useContext(ImageGalleryContext);
+  const { updateActiveTab, updateTabs, activeTab } = useContext(GalleryTabContext);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -45,18 +39,18 @@ const ImageGallery = ({ imagesList, tabs, defaultTab, chunkSize }) => {
   const handleClose = () => {
     setOpen(false);
   };
+  useEffect(() => {
+    updateImageList(imagesList);
+    updateChunkSize(chunkSize);
+  }, [imagesList, tabs, chunkSize, updateChunkSize, updateImageList]);
 
   useEffect(() => {
-    let imageChunks = createChunks(imagesList[defaultTab], chunkSize);
-    updateTabs(tabs)
-    updateActiveTab(defaultTab);
-    updateImageList(imagesList);
-    updateImageChunks(imageChunks);
-    updateDIsliderChecked([true, ...populateFalseArray(imagesList[defaultTab].length - 1)])
-    updateIBsliderChecked([true, ...populateFalseArray(imageChunks.length - 1)])
-    updateChunkSize(chunkSize);
-
-  }, []);
+    if (activeTab === defaultTab) {
+      updateTabs(tabs)
+      updateActiveTab(defaultTab);
+    }
+  }, [updateTabs, tabs,
+    updateActiveTab, defaultTab, activeTab])
 
   return (
     <React.Fragment>
